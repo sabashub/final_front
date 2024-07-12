@@ -1,0 +1,27 @@
+.questions_card {
+    display: inline-block; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 500px;
+    margin-right: 80px; 
+    margin-bottom: 80px; 
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 10px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer;
+    margin-top: 10px; 
+}

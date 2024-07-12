@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 class="questionaire" style="margin: auto; margin-bottom: 100px;">გამოკითხვა</h1>
+  
+    <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name_surname" style="color: #1C3969; font-size: 25px; margin-right: 80px;" >სახელი და გვარი</label>
+            <input id="name_surname" type="text" formControlName="name_surname" style="margin-bottom: 30px;"/>
+        </div>
+    
+        <div formArrayName="questionAnswers" class="questions-container">
+            <div *ngFor="let answerGroup of questionAnswersArray.controls; let i = index" class="questions_card">
+                <div [formGroupName]="i">
+                    <div style="display: flex; flex-direction: row; ">
+                        <h3 style="color: #2D7ED0; margin-right: 20px;" >კითხვა</h3>
+                        <h3>{{ questions[i].question }}</h3>
+                    </div>
+                    <div style="display: flex; flex-direction: row;     ">
+                        <label style="color: #2D7ED0; margin-right: 20px;">პასუხი</label>
+                        <input type="text" formControlName="answer" />
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <button type="submit">პასუხების გაგზავნა</button>
+    </form>
+</div>

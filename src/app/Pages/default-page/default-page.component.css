@@ -1,0 +1,29 @@
+.container{
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200PX;
+   margin: auto;
+    border: 1px solid rgb(93, 159, 216);
+}
+
+
+.options_container{
+    margin-top: 100px;
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.options{
+    width: 100px;
+
+    display: flex;
+    border-radius: 50%;
+}
+
