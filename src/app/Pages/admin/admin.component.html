@@ -1,78 +1,19 @@
+<div class="navbar">
+  <p (click)="switchView('admin')" [ngClass]="{'selected': currentView === 'admin'}">ადმინ.პანელი</p>
+  <p (click)="switchView('results')" [ngClass]="{'selected': currentView === 'results'}">გამოგზავნილი / შევსებული კითხვები</p>
+</div>
+
 <div class="admin-container">
-  <h1>კითხვების დამატება</h1>
-
-  <div class="question_card">
-    <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
-      <div class="p-field">
-        <label for="question">კითხვა</label>
-        <input id="question" type="text" pInputText formControlName="question"  />
-      </div>
-      <div class="p-field">
-        <label for="answer">პასუხი</label>
-        <input id="answer" type="text" pInputText formControlName="answer" />
-      </div>
-      <div class="p-field">
-        <label for="mandatory">სავალდებულო</label>
-        <input type="checkbox" id="mandatory" formControlName="mandatory" (change)="onMandatoryChange($event)" />
-      </div>
-      <p-button label="დამატება" type="submit"></p-button>
-    </form>
-  </div>
-  <h2>დამატებული კითხვები</h2>
-  <div class="card-container">
-    <div *ngFor="let question of questions" class="question-card">
-      <div class="question">
-        <strong>კითხვა:</strong> {{ question.question }}
-      </div>
-      <div class="answer">
-        <strong>პასუხი:</strong> {{ question.answer }}
-      </div>
-      <div class="mandatory">
-        <strong>სავალდებულო:</strong> {{ question.mandatory == '1' ? 'კი' : 'არა' }}
-      </div>
-      <div>
-        <button (click)="editQuestion(question)" class="edit-button">შეცვლა</button>
-      </div>
-      <div *ngIf="question.editing" class="edit-form">
-        <form [formGroup]="editForm" (ngSubmit)="updateQuestion(question)">
-          <div class="p-field">
-            <label for="editQuestion">შეცვალე კითხვა</label>
-            <input id="editQuestion" type="text" pInputText formControlName="editQuestion" />
-          </div>
-          <div class="p-field">
-            <label for="editAnswer">შეცვალე პასუხი</label>
-            <input id="editAnswer" type="text" pInputText formControlName="editAnswer" />
-          </div>
-          <div class="p-field">
-            <label for="editMandatory">შეცვალე სავალდებულო</label>
-            <input type="checkbox" id="editMandatory" formControlName="editMandatory" />
-          </div>
-          <button type="submit" class="update-button">შეცვლა</button>
-        </form>
-      </div>
+  <div *ngIf="currentView === 'admin'">
+   
+    <div class="admin-panel">
+      <app-add-question></app-add-question>
+      <app-question-card></app-question-card>
     </div>
   </div>
-</div>
 
-
-<div class="user-list">
-  <h2>გამოგზავნილი / შევსებული კითხვები</h2>
-  <ul>
-    <li *ngFor="let user of users" (click)="selectUser(user)">
-      {{ user }}
-    </li>
-  </ul>
-</div>
-
-
-<div *ngIf="selectedUser" class="questions-container">
-  <h2>შევსებული კითხვარი {{ selectedUser }}</h2>
-  <div *ngFor="let answer of filteredAnswers" class="answer-card">
-    <div class="question">
-      <strong>კითხვა:</strong> {{ answer.question }}
-    </div>
-    <div class="answer">
-      <strong>პასუხი:</strong> {{ answer.answer }}
-    </div>
+  <div *ngIf="currentView === 'results'">
+    
+    <app-results></app-results>
   </div>
 </div>

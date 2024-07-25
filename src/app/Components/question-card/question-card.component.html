@@ -1,22 +1,27 @@
-<h1>კითხვების დამატება</h1>
-
-<div class="question_card">
-    <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
-      <div class="p-field">
-        <label for="question">კითხვა</label>
-        <input id="question" type="text" pInputText formControlName="question" />
+<h3>დამატებული კითხვები</h3>
+<form [formGroup]="questionsForm">
+  <div formArrayName="questions">
+    <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i" class="question_card">
+      <div>
+        <div class="p-field">
+          <label for="question">კითხვა</label>
+          <input id="question" type="text" pInputText formControlName="question" [readonly]="!question.get('isEditing')?.value"/>
+        </div>
+        <div class="p-field">
+          <label for="answer">პასუხი</label>
+          <input id="answer" type="text" pInputText formControlName="answer" [readonly]="!question.get('isEditing')?.value"/>
+        </div>
+        <div class="p-field-1">
+          <div class="mandatory-container">
+            <label for="mandatory">სავალდებულო</label>
+            <input type="checkbox" id="mandatory" formControlName="mandatory" [disabled]="!question.get('isEditing')?.value"/>
+          </div>
+          <div class="p-field-buttons">
+            <button *ngIf="!question.get('isEditing')?.value" type="button" pButton label="რედაქტირება" (click)="onEdit(i)"></button>
+            <button *ngIf="question.get('isEditing')?.value" type="button" pButton label="შენახვა" (click)="onSave(i)"></button>
+          </div>
+        </div>
       </div>
-      <div class="p-field">
-        <label for="answer">პასუხი</label>
-        <input id="answer" type="password" pInputText formControlName="answer" />
-      </div>
-      <div class="p-field">
-        <label for="mandatory">სავალდებულო</label>
-        <input type="checkbox" id="mandatory" 
-               
-               />
-      </div>
-      <p-button label="დამატება" type="submit"></p-button>
-    </form>
+    </div>
   </div>
-  
+</form>

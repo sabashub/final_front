@@ -1,14 +1,19 @@
-<p-card header="Login" styleClass="ui-card-shadow">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="p-field">
-        <label for="userName">Username</label>
-        <input id="username" type="text" pInputText formControlName="userName" />
-      </div>
-      <div class="p-field">
-        <label for="password">Password</label>
+<div class="card">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <div class="p-field">
+      <label for="username">მომხმარებლის სახელი</label>
+      <input id="username" type="text" pInputText formControlName="userName" />
+    </div>
+    <div class="p-field">
+      <label for="password">პაროლი</label>
+      <div class="password-container">
         <input id="password" type="password" pInputText formControlName="password" />
+        <p-button label="შესვლა" type="submit" [disabled]="isLoginDisabled"></p-button>
       </div>
-      <p-button label="Login" type="submit" [disabled]="loginForm.invalid"></p-button>
-    </form>
-  </p-card>
-  
+    </div>
+    <div *ngIf="isLoginDisabled" class="block-message">
+      Login disabled due to multiple failed attempts. Please try again in 1 minute.
+    </div>
+  </form>
+</div>
+<p-toast></p-toast>

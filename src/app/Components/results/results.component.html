@@ -1,0 +1,24 @@
+<div class="results-container">
+    <div>
+      <h3 style="margin-left: 100px;">გადმოგზავნილი / შევსებული კითხვები</h3>
+      <div class="names-container">
+        <div *ngFor="let user of users" 
+             class="user-name" 
+             [ngClass]="{'selected': selectedUserId === user.id}" 
+             (click)="onUserClick(user.id)">
+          <h3 class="name">{{user.name}}</h3>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="selectedUser" style="margin-top: 50px;">
+      <h4 class="name-title"> {{ selectedUser }}</h4>
+      <div *ngFor="let answer of filteredAnswers" class="result">
+        <div class="result-card">
+          <p><span>კითხვა: </span>{{ answer.question }}</p>
+          <p><span>პასუხი: </span>{{ answer.answer }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

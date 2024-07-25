@@ -15,17 +15,17 @@ import { ButtonModule } from 'primeng/button';
 export class QuestionaireComponent implements OnInit{
   questionForm!: FormGroup;
   questions: any[] = [];
-  allAnswers: any[] = [];
+  submitted = false;
 
   constructor(private fb: FormBuilder, private appService: AppService) { }
 
   ngOnInit(): void {
-    this.fetchQuestions();
-    
     this.questionForm = this.fb.group({
       name_surname: ['', Validators.required],
-      questionAnswers: this.fb.array([])
+      questionAnswers: this.fb.array([]) // Initialize as an empty FormArray
     });
+
+    this.fetchQuestions();
   }
 
   fetchQuestions(): void {
@@ -44,9 +44,10 @@ export class QuestionaireComponent implements OnInit{
     const questionControls = this.questions.map(question => {
       return this.fb.group({
         question: [question.question],
-        answer: ['', Validators.required]
+        answer: ['', question.mandatory == '1' ? Validators.required : null]
       });
     });
+
     this.questionForm.setControl('questionAnswers', this.fb.array(questionControls));
   }
 
@@ -55,33 +56,33 @@ export class QuestionaireComponent implements OnInit{
   }
 
   onSubmit(): void {
-    if (this.questionForm.valid) {
-      this.allAnswers = [];
+    this.submitted = true;
 
+    if (this.questionForm.valid) {
       const name_surname = this.questionForm.value.name_surname;
       const questionAnswers = this.questionForm.value.questionAnswers;
 
-      questionAnswers.forEach((answer: any) => {
-        const answerObject = {
-          name_surname: name_surname,
-          question: answer.question,
-          answer: answer.answer
-        };
-        this.allAnswers.push(answerObject);
-      });
+      const finalObject = {
+        name: name_surname,
+        questionsAndAnswers: questionAnswers.map((qa: any) => ({
+          question: qa.question,
+          answer: qa.answer
+        }))
+      };
 
-      console.log('All Answers:', this.allAnswers);
-      this.appService.sendAnswers(this.allAnswers)
-      .subscribe(
-        (response: any) => {
-          console.log(' successful:', response);
-          alert("პასუხები გაგზავნილია წარმატებით")
-        },
-        (error: any) => {
-          console.error(' error:', error);
-          
-        }
-      );
+      console.log('Final JSON Object:', finalObject);
+
+      this.appService.sendResult(finalObject)
+        .subscribe(
+          (response: any) => {
+            console.log('Successful:', response);
+            alert("პასუხები გაგზავნილია წარმატებით");
+            this.questionForm.reset()
+          },
+          (error: any) => {
+            console.error('Error:', error);
+          }
+        );
 
     } else {
       console.error('Form is invalid');

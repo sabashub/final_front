@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,12 @@ export class AppService {
   private authTokenKey = 'auth_token';
 
   private jwtHelper: JwtHelperService; 
+  private dataUpdated = new BehaviorSubject<boolean>(false);
+  dataUpdated$ = this.dataUpdated.asObservable();
+  notifyDataChange() {
+    this.dataUpdated.next(true);
+  }
+
 
   constructor(private http: HttpClient) {
     this.jwtHelper = new JwtHelperService(); 
@@ -34,19 +40,23 @@ export class AppService {
     return this.http.put(`${this.apiUrl}/edit_question${id}`, data);
   }
 
-  sendAnswers(data: any){
-    return this.http.post(`${this.apiUrl}/add_answers`, data);
+  sendResult(data: any){
+    return this.http.post(`${this.apiUrl}/add_result`, data);
   }
 
-  getAnswers(): Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}/get_answers`);
+  getResults(userId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/get_results/${userId}`);
+  }
+  
+  getNames(): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/get_names`);
   }
 
 
 
-  getUsers(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get_users`);
-  }
+  // getUsers(): Observable<any> {
+  //   return this.http.get<any>(`${this.apiUrl}/get_users`);
+  // }
 
   loginUser(data: any) {
     return this.http.post<any>(`${this.apiUrl}/login`, data)

@@ -1,28 +1,21 @@
-<p-card header="Registration" styleClass="ui-card-shadow">
+<div class="card">
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
     <div class="p-field">
-      <label for="username">Username</label>
+      <label for="username">შეიყვანეთ თქვენი სახელი</label>
       <input id="username" type="text" pInputText formControlName="username" />
     </div>
     <div class="p-field">
-      <label for="name">name</label>
+      <label for="name">მომხმარებლის სახელი</label>
       <input id="name" type="text" pInputText formControlName="name" />
-      <div *ngIf="registrationForm.get('name')?.errors?.['required']" class="error-message">
-        name is required.
-      </div>
     </div>
-    <div class="p-field">
-      <label for="password">Password</label>
+  
+    <div class="p-field ">
+      <label for="password">პაროლი</label>
+     <div class="p-field-button">
       <input id="password" type="password" pInputText formControlName="password" />
-      <div *ngIf="registrationForm.get('password')?.errors?.['required']" class="error-message">
-        Password is required.
-      </div>
-      <div *ngIf="registrationForm.get('password')?.errors?.['invalidPassword']" class="error-message">
-        Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-      </div>
+      <button label="Register" type="submit" >შესვლა</button>
     </div>
-    <div class="p-field">
-      <p-button label="Register" type="submit" [disabled]="registrationForm.invalid"></p-button>
-    </div>
+     </div>
+      
   </form>
-</p-card>
+</div>

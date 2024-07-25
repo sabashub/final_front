@@ -1,46 +1,54 @@
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    margin-top: 150px;
+    font-family: 'FiraGO';
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #1C3969;
+
+
+    
   }
   
   .card {
-    width: 400px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-header {
-    background-color: #f0f0f0;
-    padding: 12px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .card-body {
-    padding: 20px;
-  }
-  
-  .button-group {
+    width: 600px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    flex-direction: column;
+
   }
-  
-  .button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+  .button-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 50px;
   }
-  
+
+  .button{
+    width: 200px;
+    height: 50px;
+    border: 1px solid #DEEFFF;
+    border-radius: 10px;
+    background-color: white;
+    font-family: 'FiraGO ';
+    font-weight:bolder;
+    font-size: 18px;
+    line-height: 21px;
+    color:#1C3969
+  }
+
+
   .button.selected {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #DEEFFF;
+    
   }
   
-  .component-container {
-    margin-top: 20px;
-  }
-  
+ 

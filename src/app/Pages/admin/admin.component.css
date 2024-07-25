@@ -1,133 +1,40 @@
-.card-container {
-    display: flex;
-    
-    flex-wrap: wrap;
-    gap: 20px;
-  }
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  width: 100%;
+  height: 100px;
+  background-color: white;
   
-  .question-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    width: 300px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  }
+}
+
+.navbar p {
   
-  .question-card .question,
-  .question-card .answer,
-  .question-card .mandatory {
-    margin-bottom: 8px;
-  }
+
+  font-family: FiraGO;
+font-size: 20px;
+font-weight: 600;
+line-height: 24px;
+cursor: pointer;
+color: #DEEFFF;
+
+}
+
+
+.navbar p.selected {
   
-  .question-card .question,
-  .question-card .answer {
-    font-weight: bold;
-  }
-  .admin-container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  
-  .question_card, .card-container, .user-list, .questions-container {
-    margin-top: 20px;
-  }
-  
-  .question-card, .answer-card, .user-card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin-bottom: 15px;
-  }
-  
-  .p-field {
-    margin-bottom: 10px;
-  }
-  
-  .p-field label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .p-field input[type="text"], .p-field input[type="password"], .p-field input[type="checkbox"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  .p-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007ad9;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .p-button:hover {
-    background-color: #005bb5;
-  }
-  
-  .user-list ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .user-list ul li {
-    background-color: #ffffff;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 5px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .user-list ul li:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .questions-container {
-    margin-top: 20px;
-  }
-  
-  .question, .answer, .mandatory {
-    margin-bottom: 10px;
-  }
-  
-  .edit-button, .update-button {
-    background-color: #007ad9;
-    color: #ffffff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .edit-button:hover, .update-button:hover {
-    background-color: #005bb5;
-  }
-  
-  .edit-form {
-    margin-top: 15px;
-  }
-  
-  input{
-    width: 200px;
-  }
-  
+  color: #1C3969;
+}
+
+.admin-container {
+  margin: 20px;
+}
+
+.admin-panel{
+  display: flex;
+  width: 100%;
+  gap: 100px;
+
+}
+

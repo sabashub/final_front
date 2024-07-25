@@ -1,4 +1,4 @@
-.question_card {
+.question_card{
     width: 700px;
     height: 150px;
     border-radius: 10px;
@@ -6,73 +6,66 @@
     display: flex;
     flex-direction: column;
     color: #1C3969; 
-    margin-right: 100px;
-  }
-  
-  .p-field {
+    margin-left: 100px;
+
+}
+/* form{
+    margin-top: 20px;
+} */
+
+.p-field{
+   
     width: 100%;
     align-items: center;
     display: flex;
     justify-content: space-between;
-  }
-  
-  label {
+}
+
+label{
     width: 57px;
     height: 19px;
     font-size: 16px;
     font-weight: 400;
     margin-left: 20px;
     color: #2D7ED0;
-  }
-  
-  #answer, #question {
+}
+
+#answer, #question{
     width: 550px;
     height: 30px;
     border: none;
     border-bottom: 1px solid #DEEFFF;
     margin-right: 20px;
     margin-top: 10px;
-  }
-  
-  #mandatory {
+}
+
+#mandatory{
     width: 18px;
     height: 18px;
-    margin-left: 80px;
-  }
-  
-  .p-field-1 {
+}
+
+.p-field-1{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
-  }
-  
-  .mandatory-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .p-field-buttons {
-    display: flex;
-    align-items: center;
-  }
-  
-  button {
+}
+
+.p-field-1 input{
+    margin-left: 30px;
+}
+
+button{
     width: 170px;
-    height: 40px;
-    border-radius: 10px;
-    background-color: #1C3969;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    margin-right: 30px;
+height: 40px;
 
-  }
+border-radius: 10px;
+background-color: #1C3969;
+color: white;
+font-size: 16px;
+font-weight: 600;
+border: none;
+margin-right: 30px  ;
 
-  .question_card{
-    margin-bottom: 30px;
-    border: 1px solid #5EC072;
-  }
-  
+}

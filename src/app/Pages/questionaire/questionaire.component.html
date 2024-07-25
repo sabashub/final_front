@@ -1,28 +1,34 @@
 <div class="container">
-    <h1 class="questionaire" style="margin: auto; margin-bottom: 100px;">გამოკითხვა</h1>
-  
-    <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="name_surname" style="color: #1C3969; font-size: 25px; margin-right: 80px;" >სახელი და გვარი</label>
-            <input id="name_surname" type="text" formControlName="name_surname" style="margin-bottom: 30px;"/>
-        </div>
-    
-        <div formArrayName="questionAnswers" class="questions-container">
-            <div *ngFor="let answerGroup of questionAnswersArray.controls; let i = index" class="questions_card">
-                <div [formGroupName]="i">
-                    <div style="display: flex; flex-direction: row; ">
-                        <h3 style="color: #2D7ED0; margin-right: 20px;" >კითხვა</h3>
-                        <h3>{{ questions[i].question }}</h3>
-                    </div>
-                    <div style="display: flex; flex-direction: row;     ">
-                        <label style="color: #2D7ED0; margin-right: 20px;">პასუხი</label>
-                        <input type="text" formControlName="answer" />
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+  <div class="navbar">
+    <p>გამოკითხვა</p>
+  </div>
 
-        <button type="submit">პასუხების გაგზავნა</button>
-    </form>
+  <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <div class="name-input">
+      <label for="name_surname">შეიყვანეთ თქვენი სახელი და გვარი</label>
+      <input id="name_surname" formControlName="name_surname" type="text">
+      <div *ngIf="questionForm.get('name_surname')?.invalid"></div>
+    </div>
+    <small style="color: red; margin-left: 100px;">გთხოვთ შეიყვანეთ თქვენი სახელი და გვარი</small>
+
+    <div formArrayName="questionAnswers" class="questions-container">
+      <div *ngFor="let question of questionAnswersArray.controls; let i = index" [formGroupName]="i" class="question-card">
+        <div class="p-field-1">
+          <label for="question">კითხვა: {{ questions[i].question }}</label>
+        </div>
+        <div class="p-field-1">
+          <label>პასუხი: </label>
+          <input formControlName="answer" type="text">
+        </div>
+        <div *ngIf="questions[i].mandatory == '1' && question.get('answer')?.invalid" style="text-align: right; margin-right: 10px; color: #FF5757">
+          <small>პასუხის გაცემა სავალდებულოა !</small>
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="submit" >პასუხების გაგზავნა</button>
+      </div>
+    </div>
+
+    
+  </form>
 </div>

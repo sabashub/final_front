@@ -1,12 +1,13 @@
 <div class="container">
+  <h3 class="title">კითხვარი</h3>
     <div class="card">
       <div class="card-header">
       
       </div>
       <div class="card-body">
         <div class="button-group">
-          <button class="button" [class.selected]="selectedComponent === 'login'" (click)="selectComponent('login')">Login</button>
-          <button class="button" [class.selected]="selectedComponent === 'registration'" (click)="selectComponent('registration')">Registration</button>
+          <button class="button" [class.selected]="selectedComponent === 'login'" (click)="selectComponent('login')">ავტორიზაცია</button>
+          <button class="button" [class.selected]="selectedComponent === 'registration'" (click)="selectComponent('registration')">რეგისტრაცია</button>
         </div>
         <div class="component-container">
           <div *ngIf="selectedComponent === 'login'">
